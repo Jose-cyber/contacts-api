@@ -1,4 +1,5 @@
-const knex = require(knex)({
+require('dotenv').config()
+const knex = require('knex')({
   client: 'pg',
   connection: {
     host : process.env.DB_HOST,
@@ -15,3 +16,15 @@ const knex = require(knex)({
     tableName: 'contacts'
   }
 });
+
+console.log(process.env.DB_HOST)
+
+knex.raw("SELECT 1").then(() => {
+  console.log("UP")
+})
+.catch((e) => {
+  console.log("DOWN")
+  console.error(e);
+});
+
+module.exports = knex;
