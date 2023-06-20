@@ -11,9 +11,11 @@ contactsRoutes
      .post(controllerContacts.send)
 
 contactsRoutes
-    .route ('/api/v1/contacts/list')
+    .route('/api/v1/contacts/list')
     .get(controllerContacts.list)
 
+contactsRoutes
+    .route('/api/v1/contacts/delete')
 
 
 module.exports = contactsRoutes;
