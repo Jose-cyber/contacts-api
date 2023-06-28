@@ -16,6 +16,7 @@ contactsRoutes
 
 contactsRoutes
     .route('/api/v1/contacts/delete')
+    .delete(controllerContacts.delete)
 
 
 module.exports = contactsRoutes;
