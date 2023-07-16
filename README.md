@@ -1,6 +1,6 @@
 # CONTACTS API
 
-In this project is a simple contact api, where's integrate with postgres database and use SMTP integration to send mail to administrator.
+This project is a simple contact api, where's integrate with postgres database and use SMTP integration to send mail to administrator.
 
 <img src="docs/fluxogram-contacts-send.svg" width="600"/>
 
