@@ -4,4 +4,4 @@ COPY package*.json .
 COPY kexfile.js .
 COPY src/ .
 RUN npm install
-CMD [ "npm","run","prd" ]
+CMD [ "npm","run","dev" ]
