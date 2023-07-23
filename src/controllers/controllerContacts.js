@@ -1,7 +1,9 @@
 const knex = require('../configs/database.js');
 const logger = require('../configs/logger.js');
-const deleteContactsSchema = require('../schemas/registerContactSchema.js')
+const deleteContactsSchema = require('../schemas/deleteContactsSchema.js')
 const registerContactSchema = require('../schemas/registerContactSchema.js')
+const timezone = require('../configs/timezone.js')
+const time = new timezone()
 
 class ControllerContacts {
     send(req, res){
@@ -11,6 +13,8 @@ class ControllerContacts {
             knex
                 .insert([ 
                     {
+                        time: time.get_hour(),
+                        date: time.get_date(),
                         name: req.body.name,
                         email: req.body.email,
                         telephone: req.body.telephone,
@@ -39,7 +43,8 @@ class ControllerContacts {
         .from('contacts')
         .timeout(1000)
         .then((query_result) =>{
-            res.status(200).json({ contacts: query_result})
+            const formattedResponse= time.formatDateInContacts(query_result);
+            res.status(200).json({ contacts: formattedResponse });
         })
         .catch((error) => {
             res.status(500).json({ status: 'Failed'})
@@ -48,14 +53,15 @@ class ControllerContacts {
     }
     delete(req, res){
         try{
-            deleteContactsSchema.validateSync(req);
+            deleteContactsSchema.validateSync(req.body, { abortEarly: false });
+            const contactId = req.body.id;
             knex('contacts')
               .del()
-              .where("id","10")
+              .where('id', contactId)
               .timeout(1000)
               .then((query_result) => {
-                res.status(200).json({ status: 'Sucess'})
-                logger.info(query_result)
+                res.status(200).json({ status: 'Success', message: "Contact "+contactId+" deleted successfully." })
+                logger.info("Contact "+contactId+" deleted successfully." )
             })
             .catch((error) =>{
                 res.status(500).json({ status: 'Failed'})

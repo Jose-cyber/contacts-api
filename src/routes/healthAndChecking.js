@@ -17,10 +17,5 @@ healthAndCheckingRoutes
     .route('/api/v1/metrics')
     .get(healthAndChecking.metrics)
 
-// swagger route
-healthAndCheckingRoutes
-    .route('/api/v1/contacts/docs')
-    .get()
-
 
 module.exports = healthAndCheckingRoutes;

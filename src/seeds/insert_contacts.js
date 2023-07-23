@@ -7,18 +7,20 @@ exports.seed = async function(knex) {
   await knex('contacts').del()
   await knex('contacts').insert([
     {
-      id: 1, 
-      name: 'jose da silva costa',
-      email: 'josedasilvacostacosta@gmail.com',
-      telephone: '12991708065',
-      message: 'olá josé, gostei muito do artigo sobre firewall linux, gostaria de pedir um artigo sobre comendo o cu de quem esta lendo.'
+      date: "2023-07-22",
+      time: "14:30:00",
+      name: 'fulano ciclano',
+      email: 'fulado.ciclano@gmail.com',
+      telephone: '+55 11 40028922',
+      message: 'hello, fulano.'
     },
     {
-      id: 2, 
-      name: 'Amanda nudes',
-      email: 'amandanudes@gmail.com',
-      telephone: '12 4002-8922',
-      message: 'olá josé, gostei muito do artigo sobre firewall linux, gostaria de pedir um artigo sobre comendo o cu de quem esta lendo.'
+      date: "2023-07-22",
+      time: "14:30:00",
+      name: 'ciclano de beltrano',
+      email: 'ciclano.beltrano@gmail.com',
+      telephone: '+55 11 40028922',
+      message: 'hello, ciclano.'
     }
   ]);
 };

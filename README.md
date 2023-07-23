@@ -2,7 +2,8 @@
 
 This project is a simple contact api, where's integrate with postgres database and use SMTP integration to send mail to administrator.
 
-<img src="docs/fluxogram-contacts-send.svg" width="600"/>
+<img src="docs/fluxograma-contacts-send.svg" width="600"/>
+
 
 
 
@@ -23,13 +24,15 @@ $ docker build -t contacts-api -f Dockerfile .
 Run:
 <pre>
 $ docker container run -d \
-    -e
-    -e
-    -e 
-    -e
-    -e 
-    -p80:80 \
-    contacts-api  
+  -e PORT=8080 \
+  -e DB_HOST=[POSTGRES IP OR HOST] \
+  -e DB_PORT=5432 \
+  -e DB_USER=[POSTGRES USER] \
+  -e DB_PASSWORD=[POSTGRES PASSWORD] \
+  -e DB_DATABASE=[POSTGRES DATABASE] \
+  -e NODE_ENV=development
+  -p80:80 \
+  contacts-api  
 </pre>
 
 
