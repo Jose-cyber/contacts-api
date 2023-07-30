@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "knex migrate:latest && nodemon ./src/index.js",
-    "prd": "",
+    "prd": "knex migrate:latest && nodemon ./src/index.js",
     "migrate": "knex migrate:latest",
-    "unmigrate": "knex migrate:rollback --knexfile knexfile.js --migrations-directory src/migrations"
+    "unmigrate": "knex migrate:rollback --knexfile knexfile.js --migrations-directory src/migrations",
+    "seeds": "knex seed:run"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "knex": "^2.4.2",
     "moment-timezone": "^0.5.43",
     "mysql2": "^3.3.5",
+    "nodemailer": "^6.9.4",
     "nodemon": "^2.0.22",
     "objection": "^3.0.1",
     "pg": "^8.11.0",

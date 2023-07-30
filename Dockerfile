@@ -1,7 +1,13 @@
-FROM node:alphine
-WORKDIR /usr/app
+FROM node:latest
+
+WORKDIR /usr/app/
 COPY package*.json .
-COPY kexfile.js .
+COPY knexfile.js .
+
+RUN npm install -g npm@9.8.1
+RUN npm install --ignore-scripts
+
 COPY src/ .
-RUN npm install
-CMD [ "npm","run","dev" ]
+USER node
+
+CMD [ "npm","run","prd" ]

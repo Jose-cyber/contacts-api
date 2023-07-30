@@ -11,8 +11,8 @@ module.exports = {
             database: process.env.DB_DATABASE,
         },
         pool: {
-            min: 2,
-            max: 5,
+            min: 1,
+            max: 3,
             createTimeoutMillis: 3000,
             acquireTimeoutMillis: 30000,
             idleTimeoutMillis: 30000,

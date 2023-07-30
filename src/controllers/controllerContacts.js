@@ -2,6 +2,7 @@ const knex = require('../configs/database.js');
 const logger = require('../configs/logger.js');
 const deleteContactsSchema = require('../schemas/deleteContactsSchema.js')
 const registerContactSchema = require('../schemas/registerContactSchema.js')
+const sendMail = require('../infra/mail/nodemailerSend.js')
 const timezone = require('../configs/timezone.js')
 const time = new timezone()
 
@@ -24,7 +25,11 @@ class ControllerContacts {
                 .into('contacts')
                 .timeout(1000)
                 .then(()=>{
-                    res.status(200).json({ status: 'Success'})
+                    // send mail to admin
+                    const mail_sent_response = sendMail(req.body.name,req.body.telephone,req.body.email,req.body.message) 
+
+                    // send response 
+                    res.status(200).json({ status: 'Success',mail_sent_response})
                 })
                 .catch((error) => {
                     res.status(500).json({ status: 'Failed'})

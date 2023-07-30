@@ -11,10 +11,7 @@ class HealthAndChecking {
         });
     }
     index(req, res){
-        res.send({message: 'contacts api'})
-    }
-    metrics(req,res){
-        
+        res.status(200).json({message: 'contacts api'})
     }
 }
 
