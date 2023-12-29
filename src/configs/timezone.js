@@ -4,7 +4,7 @@ const { format } = require('date-fns');
 require('dotenv').config()
 const now = moment();
 
-class timezone{
+class TimezoneFormat{
     get_date(){
         const date = now.year()+'-'+(now.month() + 1).toString().padStart(2, '0')+'-'+now.date()
         return date
@@ -25,4 +25,4 @@ class timezone{
     }
 }
 
-module.exports = timezone;
+module.exports = TimezoneFormat;

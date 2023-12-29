@@ -2,9 +2,10 @@ const knex = require('../configs/database.js');
 const logger = require('../configs/logger.js');
 const deleteContactsSchema = require('../schemas/deleteContactsSchema.js')
 const registerContactSchema = require('../schemas/registerContactSchema.js')
-const sendMail = require('../infra/mail/nodemailerSend.js')
-const timezone = require('../configs/timezone.js')
-const time = new timezone()
+const EmailService = require('../infra/mail/nodemailerSend.js');
+const emailService = new EmailService(); 
+const TimezoneFormat = require('../configs/timezone.js')
+const time = new TimezoneFormat()
 
 class ControllerContacts {
     send(req, res){
@@ -24,23 +25,28 @@ class ControllerContacts {
                 ])
                 .into('contacts')
                 .timeout(1000)
-                .then(()=>{
-                    // send mail to admin
-                    const mail_sent_response = sendMail(req.body.name,req.body.telephone,req.body.email,req.body.message) 
-
-                    // send response 
-                    res.status(200).json({ status: 'Success',mail_sent_response})
+                .then(async ()=>{
+                    const sendMailRequest = await emailService.sendMail(
+                        req.body.name,
+                        req.body.telephone,
+                        req.body.email,
+                        req.body.message
+                    );
+                    console.log(sendMailRequest)
+                    // Verificar resultado do envio de email antes de responder
+                    if (sendMailRequest.success) {
+                        return res.status(200).json({ status: 'Success', sendMailRequest });
+                    } else {
+                        throw new Error('Failed to send email');
+                    }
                 })
                 .catch((error) => {
-                    res.status(500).json({ status: 'Failed'})
-                    logger.error(error)
-                })
+                    res.status(500).json({ status: 'Failed', error: error.message });
+                });
           } 
-        catch (err) {
+        catch(error) {
             return res.status(400).json({ Missing: 'Parameters'});
         } 
-        
-            
     }
     list(req, res){
        knex
