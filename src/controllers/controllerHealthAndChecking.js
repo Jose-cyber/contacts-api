@@ -5,9 +5,9 @@ class HealthAndChecking {
         knex.raw("SELECT 1").then(() => {
             res.json({status: "UP"}).status(200);
         })
-        .catch((e) => {
+        .catch((error) => {
             res.status(500).json({status: "DOWN"})
-            console.error(e);
+            logger.error(error.message);
         });
     }
     index(req, res){

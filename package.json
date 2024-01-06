@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "knex migrate:latest && nodemon ./src/index.js",
-    "prd": "knex migrate:latest && node src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "prd": "node src/index.js",
     "migrate": "knex migrate:latest",
     "unmigrate": "knex migrate:rollback --knexfile knexfile.js --migrations-directory src/migrations",
     "seeds": "knex seed:run"

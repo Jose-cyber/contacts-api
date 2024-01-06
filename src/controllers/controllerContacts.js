@@ -42,10 +42,12 @@ class ControllerContacts {
                 })
                 .catch((error) => {
                     res.status(500).json({ status: 'Failed', error: error.message });
+                    logger.error(error.message)
                 });
           } 
         catch(error) {
-            return res.status(400).json({ Missing: 'Parameters'});
+            res.status(400).json({ Missing: 'Parameters'});
+            logger.error(error.message)
         } 
     }
     list(req, res){
@@ -59,7 +61,7 @@ class ControllerContacts {
         })
         .catch((error) => {
             res.status(500).json({ status: 'Failed'})
-            logger.error(error);
+            logger.error(error.message);
         })
     }
     delete(req, res){
@@ -70,17 +72,18 @@ class ControllerContacts {
               .del()
               .where('id', contactId)
               .timeout(1000)
-              .then((query_result) => {
+              .then(() => {
                 res.status(200).json({ status: 'Success', message: "Contact "+contactId+" deleted successfully." })
                 logger.info("Contact "+contactId+" deleted successfully." )
             })
             .catch((error) =>{
                 res.status(500).json({ status: 'Failed'})
-                logger.error(error);
+                logger.error(error.message);
             })
         }
-        catch(err){
-            return res.status(400).json({ Missing: 'Parameters'});
+        catch(error){
+            res.status(400).json({ Missing: 'Parameters'});
+            logger.error(error.message);
         }
         
     }

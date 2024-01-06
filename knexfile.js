@@ -11,14 +11,8 @@ module.exports = {
             database: process.env.DB_DATABASE,
         },
         pool: {
-            min: 1,
-            max: 3,
-            createTimeoutMillis: 3000,
-            acquireTimeoutMillis: 30000,
-            idleTimeoutMillis: 30000,
-            reapIntervalMillis: 1000,
-            createRetryIntervalMillis: 100,
-            propagateCreateError: false
+            min: 0,
+            max: 10,
             },
         migrations: {
             tableName: 'knex_migrations',
@@ -27,7 +21,7 @@ module.exports = {
         seeds: {
             directory: 'src/seeds',
         },
-        debug: true,
+        debug: process.env.DB_DEBUG,
     },
     production: {
         client: 'pg',
@@ -39,14 +33,8 @@ module.exports = {
             database: process.env.DB_DATABASE,
             },
         pool: {
-            min: 2,
-            max: 5,
-            createTimeoutMillis: 3000,
-            acquireTimeoutMillis: 30000,
-            idleTimeoutMillis: 30000,
-            reapIntervalMillis: 1000,
-            createRetryIntervalMillis: 100,
-            propagateCreateError: false
+            min: 0,
+            max: 20
         },
         migrations: {
             tableName: 'knex_migrations',
@@ -55,6 +43,6 @@ module.exports = {
         seeds: {
             directory: 'src/seeds',
         },
-        debug: false,
+        debug: process.env.DB_DEBUG,
         }
 }
