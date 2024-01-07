@@ -26,4 +26,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: josecyber/contacts-api:$GITHUB_SHA 
+          tags: josecyber/contacts-api:${GITHUB_SHA} 
