@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.js",
     "prd": "node src/index.js",
+    "swagger-autogen": "node ./src/configs/swagger-autogen.js",
     "migrate": "knex migrate:latest",
     "unmigrate": "knex migrate:rollback --knexfile knexfile.js --migrations-directory src/migrations",
     "seeds": "knex seed:run"

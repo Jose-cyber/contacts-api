@@ -1,0 +1,224 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "contacts-api",
+    "description": "Simple api thats send mails and saves in relational database."
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Contacts",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Actuator",
+      "description": "Health Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Actuator"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "UP"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Connection to database is health."
+          },
+          "500": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "DOWN"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Failed to connect to database!."
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/send": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "send",
+            "in": "body",
+            "description": "Register and send information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/send"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/list": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "List all contacts from database",
+        "responses": {
+          "200": {
+            "description": "Return a list of objects.",
+            "schema": {
+              "$ref": "#/definitions/list"
+            }
+          },
+          "500": {
+            "description": "Failed to list contacts.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Failed"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/delete": {
+      "delete": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "Register id",
+            "in": "body",
+            "description": "Register information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/delete"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "send": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "manoel gomes"
+        },
+        "email": {
+          "type": "string",
+          "example": "manuelgome@gmail.com"
+        },
+        "telephone": {
+          "type": "string",
+          "example": "12991708065"
+        },
+        "message": {
+          "type": "string",
+          "example": "hello, good afternoom."
+        }
+      }
+    },
+    "list": {
+      "type": "object",
+      "properties": {
+        "contacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "date": {
+                "type": "string",
+                "example": "22/07/2023"
+              },
+              "time": {
+                "type": "string",
+                "example": "14:30:00"
+              },
+              "name": {
+                "type": "string",
+                "example": "fulano ciclano"
+              },
+              "email": {
+                "type": "string",
+                "example": "fulado.ciclano@gmail.com"
+              },
+              "telephone": {
+                "type": "string",
+                "example": "+55 11 40028922"
+              },
+              "message": {
+                "type": "string",
+                "example": "hello, fulano."
+              }
+            }
+          }
+        }
+      }
+    },
+    "delete": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 4
+        }
+      }
+    }
+  }
+}
