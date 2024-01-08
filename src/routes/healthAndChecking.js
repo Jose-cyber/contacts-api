@@ -15,7 +15,7 @@ healthAndCheckingRoutes
       description: "Connection to database is health."
       }
       */
-     /*
+      /*
       #swagger.responses[500] = { 
       schema: { status: "DOWN"},
       description: "Failed to connect to database!."

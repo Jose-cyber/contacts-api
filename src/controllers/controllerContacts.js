@@ -32,16 +32,16 @@ class ControllerContacts {
                         req.body.email,
                         req.body.message
                     );
-                    console.log(sendMailRequest)
                     // Verificar resultado do envio de email antes de responder
                     if (sendMailRequest.success) {
                         return res.status(200).json({ status: 'Success', sendMailRequest });
                     } else {
-                        throw new Error('Failed to send email');
+                        res.status(500).json({ status: 'Failed to send mail'});
+                        logger.error(sendMailRequest.error)
                     }
                 })
                 .catch((error) => {
-                    res.status(500).json({ status: 'Failed', error: error.message });
+                    res.status(500).json({ status: 'Failed' });
                     logger.error(error.message)
                 });
           } 

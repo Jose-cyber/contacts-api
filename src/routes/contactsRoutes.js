@@ -16,7 +16,28 @@ contactsRoutes
             description: 'Register and send information.',
             required: true,
             schema: { $ref: "#/definitions/send" }
-        }*/
+      }*/
+      
+      /* #swagger.responses[200] = { 
+           description: "Register data, and sended email",
+           schema: { status: 'Success', sendMailRequest }
+      }*/
+
+      /* #swagger.responses[400] = { 
+           description: "Database connection or query failed",
+           schema: { Missing: 'Parameters'}
+      }*/
+
+      /* #swagger.responses[500] = { 
+           description: "Database connection or query failed",
+           schema: { status: 'Failed' }
+      }*/
+
+      /* #swagger.responses[500] = { 
+           description: "Failed to send email",
+           schema: { status: 'Failed to send mail'}
+      }*/
+
     })
 
 contactsRoutes
@@ -28,12 +49,17 @@ contactsRoutes
       /* #swagger.responses[200] = { 
            description: "Return a list of objects.", 
            schema: {$ref: "#/definitions/list"}
-        }*/
-
+      }*/
+      
       /* #swagger.responses[500] = { 
-           description: "Failed to list contacts.",
-           schema: { status: 'Failed'}
-        }*/
+           description: "Database connection or query failed",
+           schema: { status: 'Failed to send mail'}
+      }*/
+
+      /* #swagger.responses[400] = { 
+           description: "Database connection or query failed",
+           schema: { Missing: 'Parameters'}
+      }*/
       
     })
 contactsRoutes
@@ -47,7 +73,21 @@ contactsRoutes
             required: true,
             schema: { $ref: "#/definitions/delete" }
       }*/
+      
+      /* #swagger.responses[200] = { 
+           description: "Database connection or query failed",
+           schema: { "status": "Success", "message": "Contact 1 deleted successfully." }
+      }*/
+            
+      /* #swagger.responses[500] = { 
+           description: "Database connection or query failed",
+           schema: { status: 'Failed'}
+      }*/
 
+      /* #swagger.responses[400] = { 
+           description: "Bad request, missing parameter.",
+           schema: { Missing: 'Parameters'}
+      }*/
     })
 
 
