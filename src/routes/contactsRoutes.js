@@ -19,8 +19,8 @@ contactsRoutes
       }*/
       
       /* #swagger.responses[200] = { 
-           description: "Register data, and sended email",
-           schema: { status: 'Success', sendMailRequest }
+           description: "Register data, and sent email",
+           schema: { status: 'Success'}
       }*/
 
       /* #swagger.responses[400] = { 

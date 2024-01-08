@@ -86,8 +86,50 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "Register data, and sent email",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Success"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Database connection or query failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Missing": {
+                  "type": "string",
+                  "example": "Parameters"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to send email",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Failed to send mail"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       }
@@ -105,14 +147,29 @@
               "$ref": "#/definitions/list"
             }
           },
+          "400": {
+            "description": "Database connection or query failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Missing": {
+                  "type": "string",
+                  "example": "Parameters"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
           "500": {
-            "description": "Failed to list contacts.",
+            "description": "Database connection or query failed",
             "schema": {
               "type": "object",
               "properties": {
                 "status": {
                   "type": "string",
-                  "example": "Failed"
+                  "example": "Failed to send mail"
                 }
               },
               "xml": {
@@ -141,8 +198,54 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "Database connection or query failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Contact 1 deleted successfully."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, missing parameter.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Missing": {
+                  "type": "string",
+                  "example": "Parameters"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Database connection or query failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Failed"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       }
