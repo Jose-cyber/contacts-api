@@ -17,11 +17,9 @@ You can also use the api route (/api/v1/contacts/list) to list all contacts sinc
 You you can also delete some contacts from the database using the route(/api/v1/contacts/delete).
 </p>
 
-**Requirements**:
-<ul>
-  <li>Database: Postgres</li>
-  <li>SMTP: smtp account</li>
-</ul>
+### Requirements:
+ * Relational Database(PostgreSQL, CockroachDB, MSSQL, MySQL, MariaDB, SQLite3, Better-SQLite3, Oracle, and Amazon Redshift).
+ * SMTP: smtp account
 
 ## Run local:
 Command:
@@ -64,5 +62,5 @@ $ docker run -d \
 
 Image on my own docker repository:
 
-<a href="">contacts-api</a>
+<a href="https://hub.docker.com/repository/docker/josecyber/contacts-api/general">contacts-api</a>
 

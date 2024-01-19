@@ -5,7 +5,6 @@
     "title": "contacts-api",
     "description": "Simple api thats send mails and saves in relational database."
   },
-  "host": "localhost:8000",
   "basePath": "/",
   "tags": [
     {

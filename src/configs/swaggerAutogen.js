@@ -8,7 +8,7 @@ const doc = {
         title: "contacts-api",
         description: "Simple api thats send mails and saves in relational database."
     },
-    host: "localhost:8000",
+    host: process.env.APP_HOST,
     basePath: "/",
     schemes: ['http', 'https'],
     consumes: ['application/json'],
