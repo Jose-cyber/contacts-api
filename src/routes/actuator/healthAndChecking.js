@@ -1,4 +1,4 @@
-const HealthAndChecking = require('../controllers/controllerHealthAndChecking.js');
+const HealthAndChecking = require('../../controllers/actuator/controllerHealthAndChecking.js');
 const healthAndChecking = new HealthAndChecking
 const express = require('express');
 

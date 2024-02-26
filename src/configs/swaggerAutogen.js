@@ -21,6 +21,10 @@ const doc = {
         {
             "name": "Actuator",
             "description": "Health Endpoints"
+        },
+        {
+            "name": "Bug Report",
+            "description": "Bug Report Endpoints"
         }
         
     ],

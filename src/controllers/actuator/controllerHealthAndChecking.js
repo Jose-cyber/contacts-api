@@ -1,4 +1,4 @@
-const knex = require('../configs/database.js');
+const knex = require('../../configs/database.js');
 
 class HealthAndChecking {
     actuator(req, res){

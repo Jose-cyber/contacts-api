@@ -15,6 +15,10 @@
     {
       "name": "Actuator",
       "description": "Health Endpoints"
+    },
+    {
+      "name": "Bug Report",
+      "description": "Bug Report Endpoints"
     }
   ],
   "schemes": [
@@ -246,6 +250,19 @@
                 "name": "main"
               }
             }
+          }
+        }
+      }
+    },
+    "/api/v1/bug/report": {
+      "post": {
+        "tags": [
+          "Bug Report"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }

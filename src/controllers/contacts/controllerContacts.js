@@ -1,10 +1,10 @@
-const knex = require('../configs/database.js');
-const logger = require('../configs/logger.js');
-const deleteContactsSchema = require('../schemas/deleteContactsSchema.js')
-const registerContactSchema = require('../schemas/registerContactSchema.js')
-const EmailService = require('../infra/mail/nodemailerSend.js');
+const knex = require('../../configs/database.js');
+const logger = require('../../configs/logger.js');
+const deleteContactsSchema = require('../../schemas/deleteContactsSchema.js')
+const registerContactSchema = require('../../schemas/registerContactSchema.js')
+const EmailService = require('../../infra/mail/nodemailerSend.js');
 const emailService = new EmailService(); 
-const TimezoneFormat = require('../configs/timezone.js')
+const TimezoneFormat = require('../../configs/timezone.js')
 const time = new TimezoneFormat()
 
 class ControllerContacts {
