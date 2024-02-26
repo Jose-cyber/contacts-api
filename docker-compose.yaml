@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  db-contacts-api:
+    image: postgres:15.3-alpine
+    container_name: db-contacts-api
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: lobato_conecta
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    # networks:
+    #   - lobato-conecta-vpc
+
+  contacts-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: josecyber/contacts-api:latest
+    container_name: contacts-api
+    #restart: always
+    env_file:
+      - ./.env
+    depends_on:
+      db-contacts-api:
+        condition: service_healthy
+    links:
+    - db-contacts-api
+    ports:
+      - 8000:8000
+#     networks:
+#       - lobato-conecta-vpc
+
+# networks:
+#   lobato-conecta-vpc:
+#     external: true
+    

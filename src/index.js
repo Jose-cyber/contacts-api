@@ -10,3 +10,5 @@ app.listen(process.env.PORT || 8080, () => {
 process.on('uncaughtException', function (exception) {
    logger.error(exception);
 });
+
+module.exports = app;

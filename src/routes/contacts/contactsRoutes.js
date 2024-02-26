@@ -1,4 +1,4 @@
-const ControllerContacts = require('../controllers/controllerContacts.js');
+const ControllerContacts = require('../../controllers/contacts/controllerContacts.js');
 const controllerContacts = new ControllerContacts
 const express = require('express');
 
@@ -7,7 +7,7 @@ const contactsRoutes = express.Router();
 
 
 contactsRoutes
-    .route('/api/v1/contacts/send')
+    .route('/contacts-api/api/v1/contacts/send')
     .post(controllerContacts.send, () => {
       // #swagger.tags = ['Contacts']
       
@@ -19,8 +19,8 @@ contactsRoutes
       }*/
       
       /* #swagger.responses[200] = { 
-           description: "Register data, and sended email",
-           schema: { status: 'Success', sendMailRequest }
+           description: "Register data, and sent email",
+           schema: { status: 'Success'}
       }*/
 
       /* #swagger.responses[400] = { 
@@ -41,7 +41,7 @@ contactsRoutes
     })
 
 contactsRoutes
-    .route('/api/v1/contacts/list')
+    .route('/contacts-api/api/v1/contacts/list')
     .get(controllerContacts.list, () => {
       // #swagger.tags = ['Contacts']
       // #swagger.description = 'List all contacts from database'
@@ -63,7 +63,7 @@ contactsRoutes
       
     })
 contactsRoutes
-    .route('/api/v1/contacts/delete')
+    .route('/contacts-api/api/v1/contacts/delete')
     .delete(controllerContacts.delete, () => {
       // #swagger.tags = ['Contacts']
 
