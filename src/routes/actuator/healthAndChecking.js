@@ -5,7 +5,7 @@ const express = require('express');
 const healthAndCheckingRoutes = express.Router();
 
 healthAndCheckingRoutes
-    .route('/api/v1/health')
+    .route('/contacts-api/health')
     .get(healthAndChecking.actuator, () => {
       // #swagger.tags = ['Actuator']
 
