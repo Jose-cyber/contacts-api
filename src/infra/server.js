@@ -26,6 +26,6 @@ app.use(bodyParser.json({limit: '50mb'}))
 app.use(healthAndCheckingRoutes);
 app.use(contactsRoutes);
 app.use(ReportBug)
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/contacts-api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 module.exports = app;

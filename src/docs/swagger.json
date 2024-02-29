@@ -32,7 +32,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/v1/health": {
+    "/contacts-api/health": {
       "get": {
         "tags": [
           "Actuator"
@@ -72,7 +72,7 @@
         }
       }
     },
-    "/api/v1/contacts/send": {
+    "/contacts-api/api/v1/contacts/send": {
       "post": {
         "tags": [
           "Contacts"
@@ -138,7 +138,7 @@
         }
       }
     },
-    "/api/v1/contacts/list": {
+    "/contacts-api/api/v1/contacts/list": {
       "get": {
         "tags": [
           "Contacts"
@@ -184,7 +184,7 @@
         }
       }
     },
-    "/api/v1/contacts/delete": {
+    "/contacts-api/api/v1/contacts/delete": {
       "delete": {
         "tags": [
           "Contacts"
@@ -254,7 +254,7 @@
         }
       }
     },
-    "/api/v1/bug/report": {
+    "/contacts-api/api/v1/bug/report": {
       "post": {
         "tags": [
           "Bug Report"
