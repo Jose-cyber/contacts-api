@@ -4,9 +4,9 @@ const swaggerUi = require('swagger-ui-express')
 const bodyParser = require('body-parser');
 
 // Routes 
-const healthAndCheckingRoutes = require('../routes/actuator/healthAndChecking.js')
+const healthAndCheckingRoutes = require('../routes/health/healthAndChecking.js')
 const contactsRoutes = require('../routes/contacts/contactsRoutes.js')
-const ReportBug = require('../routes/bugReport/bugReportRoutes.js')
+
 
 // configs
 const swaggerFile = require('../docs/swagger.json')
@@ -25,7 +25,6 @@ app.use(bodyParser.json({limit: '50mb'}))
 // calling my routes
 app.use(healthAndCheckingRoutes);
 app.use(contactsRoutes);
-app.use(ReportBug)
 app.use('/contacts-api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 module.exports = app;

@@ -5,7 +5,7 @@
     "title": "contacts-api",
     "description": "Simple api thats send mails and saves in relational database."
   },
-  "host": "localhost:8000",
+  "host": "dev.lobatoconecta.com.br",
   "basePath": "/",
   "tags": [
     {
@@ -13,12 +13,8 @@
       "description": "Endpoints"
     },
     {
-      "name": "Actuator",
-      "description": "Health Endpoints"
-    },
-    {
-      "name": "Bug Report",
-      "description": "Bug Report Endpoints"
+      "name": "Health",
+      "description": "Endpoints"
     }
   ],
   "schemes": [
@@ -35,7 +31,7 @@
     "/contacts-api/health": {
       "get": {
         "tags": [
-          "Actuator"
+          "Health"
         ],
         "description": "",
         "responses": {
@@ -250,19 +246,6 @@
                 "name": "main"
               }
             }
-          }
-        }
-      }
-    },
-    "/contacts-api/api/v1/bug/report": {
-      "post": {
-        "tags": [
-          "Bug Report"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }

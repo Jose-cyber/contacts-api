@@ -1,6 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')()
 const outputFile = '../docs/swagger.json'
 const endpointsFiles = ['../infra/server.js']
+require('dotenv').config()
 
 const doc = {
     info: {
@@ -8,7 +9,7 @@ const doc = {
         title: "contacts-api",
         description: "Simple api thats send mails and saves in relational database."
     },
-    host: "localhost:8000",
+    host: process.env.API_HOST,
     basePath: "/",
     schemes: ['http', 'https'],
     consumes: ['application/json'],
@@ -19,12 +20,8 @@ const doc = {
             "description": "Endpoints"
         },
         {
-            "name": "Actuator",
-            "description": "Health Endpoints"
-        },
-        {
-            "name": "Bug Report",
-            "description": "Bug Report Endpoints"
+            "name": "Health",
+            "description": "Endpoints"
         }
         
     ],
