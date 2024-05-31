@@ -14,6 +14,7 @@ class EmailService {
             tls: {
               rejectUnauthorized: false,
             },
+            debug: false,
         });
     }
 
@@ -25,7 +26,6 @@ class EmailService {
                 to: [process.env.SMTP_USER, process.env.ADMIN_MAIL],
                 html: this.generateEmailBody(name, telephone, email, message),
             });
-            console.log(mailSent)
             return {
                 Response: mailSent.response,
                 MessageId: mailSent.messageId,
