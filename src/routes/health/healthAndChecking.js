@@ -1,12 +1,11 @@
-const HealthAndChecking = require('../../controllers/health/controllerHealthAndChecking.js');
-const healthAndChecking = new HealthAndChecking
+const health = require('../../controllers/health/controllerHealth')
 const express = require('express');
 
 const healthAndCheckingRoutes = express.Router();
 
 healthAndCheckingRoutes
-    .route('/contacts-api/health')
-    .get(healthAndChecking.actuator, () => {
+    .route('/health')
+    .get(health.check, () => {
       // #swagger.tags = ['Health']
 
       /* 

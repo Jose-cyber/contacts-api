@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="eq-va9jUGTlsY4EYPArv" name="Page-1">
-        <mxGraphModel dx="1108" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="1537" dy="455" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -31,7 +31,7 @@
                 <mxCell id="49" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="14" target="48" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="/api/contacts/send" style="shape=manualInput;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="14" value="/api/v1/contacts/send" style="shape=manualInput;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="210" y="200" width="130" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="contacts" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" parent="1" vertex="1">

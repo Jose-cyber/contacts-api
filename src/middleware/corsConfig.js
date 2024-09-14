@@ -1,5 +1,7 @@
+require('dotenv').config()
+
 const corsOptions = {
-    origin: '*',
+    origin: process.env.CORS_CONFIG || '*',
     optionsSuccessStatus: 200
 }
 

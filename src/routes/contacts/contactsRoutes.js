@@ -7,7 +7,7 @@ const contactsRoutes = express.Router();
 
 
 contactsRoutes
-    .route('/contacts-api/api/v1/contacts/send')
+    .route('/api/v1/contacts/send')
     .post(controllerContacts.send, () => {
       // #swagger.tags = ['Contacts']
       
@@ -40,8 +40,44 @@ contactsRoutes
 
     })
 
+
 contactsRoutes
-    .route('/contacts-api/api/v1/contacts/list')
+    .route('/api/v1/contacts/send/queue')
+    .post(controllerContacts.sendQueue, () => {
+      // #swagger.tags = ['Contacts']
+      
+      /*#swagger.parameters['send'] = {
+            in: 'body',
+            description: 'Register and send information.',
+            required: true,
+            schema: { $ref: "#/definitions/send" }
+      }*/
+      
+      /* #swagger.responses[200] = { 
+           description: "Register data, and sent email",
+           schema: { status: 'Success'}
+      }*/
+
+      /* #swagger.responses[400] = { 
+           description: "Database connection or query failed",
+           schema: { Missing: 'Parameters'}
+      }*/
+
+      /* #swagger.responses[500] = { 
+           description: "Database connection or query failed",
+           schema: { status: 'Failed' }
+      }*/
+
+      /* #swagger.responses[500] = { 
+           description: "Failed to send email",
+           schema: { status: 'Failed to send mail'}
+      }*/
+
+    })
+
+
+contactsRoutes
+    .route('/api/v1/contacts/list')
     .get(controllerContacts.list, () => {
       // #swagger.tags = ['Contacts']
       // #swagger.description = 'List all contacts from database'
@@ -63,7 +99,7 @@ contactsRoutes
       
     })
 contactsRoutes
-    .route('/contacts-api/api/v1/contacts/delete')
+    .route('/api/v1/contacts/delete')
     .delete(controllerContacts.delete, () => {
       // #swagger.tags = ['Contacts']
 

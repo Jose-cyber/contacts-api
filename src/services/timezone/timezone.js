@@ -25,4 +25,5 @@ class TimezoneFormat{
     }
 }
 
-module.exports = TimezoneFormat;
+const time = new TimezoneFormat()
+module.exports = time;

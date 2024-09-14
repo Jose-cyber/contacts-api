@@ -10,16 +10,24 @@
 
 This project is a simple contact API, which integrates with a postgresql database and uses an SMTP integration to send an email to the administrator informing the contact data when sending a post to the route(/api/v1/contacts/send).
 
-<img src="docs/fluxograma-contacts-send.svg" width="600"/>
+<img src="docs/fluxogram-smtp.svg" width="600"/>
 
 <p>
 You can also use the api route (/api/v1/contacts/list) to list all contacts since they are all saved in the database.<br>
 You you can also delete some contacts from the database using the route(/api/v1/contacts/delete).
 </p>
 
+<p>
+Instead of using an SMTP service, you can integrate with rabbitMQ to send all forms to a queue.
+</p>
+
+<img src="docs/fluxogram-queue.svg" width="600"/>
+
+
 **Requirements**:
 <ul>
   <li>Database: Postgres</li>
+  <li>Queue: RabbitMQ</li>
   <li>SMTP: smtp account</li>
 </ul>
 

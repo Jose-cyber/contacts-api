@@ -1,11 +1,15 @@
+// configs
 const knex = require('../../configs/database.js');
 const logger = require('../../configs/logger.js');
+
+// schemas
 const deleteContactsSchema = require('../../schemas/deleteContactsSchema.js')
 const registerContactSchema = require('../../schemas/registerContactSchema.js')
-const EmailService = require('../../infra/mail/nodemailerSend.js');
-const emailService = new EmailService(); 
-const TimezoneFormat = require('../../configs/timezone.js')
-const time = new TimezoneFormat()
+
+// services
+const emailService = require('../../services/mail/nodemailerSend.js');
+const time = require('../../services/timezone/timezone.js')
+const RabbitMQService = require('../../services/rabbitMQ/rabbitMQService.js');
 
 class ControllerContacts {
     send(req, res){
@@ -48,6 +52,42 @@ class ControllerContacts {
         catch(error) {
             res.status(400).json({ Missing: 'Parameters'});
             logger.error(error.message)
+        } 
+    }
+
+    sendQueue(req, res){
+        try {
+            registerContactSchema.validateSync(req.body);
+            
+            knex
+                .insert([ 
+                    {
+                        time: time.get_hour(),
+                        date: time.get_date(),
+                        name: req.body.name,
+                        email: req.body.email,
+                        telephone: req.body.telephone,
+                        message: req.body.message,
+                    }
+                ])
+                .into('contacts')
+                .timeout(1000)
+                .then(async ()=>{
+                    RabbitMQService.sendToQueue({
+                        time: time.get_hour(),
+                        date: time.get_date(),
+                        name: req.body.name,
+                        email: req.body.email,
+                        telephone: req.body.telephone,
+                        message: req.body.message,
+                    })
+                    res.status(200).json({status: 'sucess'})
+                })
+
+          } 
+        catch(error) {
+            logger.error(error.message)
+            return res.status(400).json({ Missing: 'Parameters'});
         } 
     }
     list(req, res){
