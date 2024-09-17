@@ -5,7 +5,7 @@
     "title": "contacts-api",
     "description": "Simple api thats send mails and saves in relational database."
   },
-  "host": "dev.lobatoconecta.com.br",
+  "host": "api-contacts.lobatoconecta.com.br",
   "basePath": "/",
   "tags": [
     {
@@ -28,7 +28,7 @@
     "application/json"
   ],
   "paths": {
-    "/contacts-api/health": {
+    "/health": {
       "get": {
         "tags": [
           "Health"
@@ -36,6 +36,7 @@
         "description": "",
         "responses": {
           "200": {
+            "description": "Connection to database is health.",
             "schema": {
               "type": "object",
               "properties": {
@@ -47,10 +48,10 @@
               "xml": {
                 "name": "main"
               }
-            },
-            "description": "Connection to database is health."
+            }
           },
           "500": {
+            "description": "Failed to connect to database!.",
             "schema": {
               "type": "object",
               "properties": {
@@ -62,13 +63,12 @@
               "xml": {
                 "name": "main"
               }
-            },
-            "description": "Failed to connect to database!."
+            }
           }
         }
       }
     },
-    "/contacts-api/api/v1/contacts/send": {
+    "/api/v1/contacts/send": {
       "post": {
         "tags": [
           "Contacts"
@@ -134,7 +134,73 @@
         }
       }
     },
-    "/contacts-api/api/v1/contacts/list": {
+    "/api/v1/contacts/send/queue": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "send",
+            "in": "body",
+            "description": "Register and send information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/send"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Register data, and sent email",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Success"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Database connection or query failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Missing": {
+                  "type": "string",
+                  "example": "Parameters"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to send email",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Failed to send mail"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/list": {
       "get": {
         "tags": [
           "Contacts"
@@ -180,7 +246,7 @@
         }
       }
     },
-    "/contacts-api/api/v1/contacts/delete": {
+    "/api/v1/contacts/delete": {
       "delete": {
         "tags": [
           "Contacts"
