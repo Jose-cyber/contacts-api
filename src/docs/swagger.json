@@ -5,7 +5,7 @@
     "title": "contacts-api",
     "description": "Simple api thats send mails and saves in relational database."
   },
-  "host": "api-contacts.lobatoconecta.com.br",
+  "host": "api-contacts.horariodeonibusml.com.br",
   "basePath": "/",
   "tags": [
     {

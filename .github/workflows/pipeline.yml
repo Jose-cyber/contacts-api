@@ -43,5 +43,5 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/server/contacts-api
-            #sed -i 's/image: josecyber\/contacts-api:.*/image: josecyber\/contacts-api:${{ github.sha }}/' contacts-api.yaml
-            #docker compose -f contacts-api.yaml up -d
+            sed -i 's/image: josecyber\/contacts-api:.*/image: josecyber\/contacts-api:${{ github.sha }}/' contacts-api.yaml
+            docker compose -f contacts-api.yaml up -d
